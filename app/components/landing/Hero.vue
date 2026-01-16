@@ -11,12 +11,12 @@ defineProps<{
 <template>
   <UPageHero
     :ui="{
-      // Match section alignment: rely on AppShell for gutters
-      container: 'px-0 pt-14 sm:pt-16 pb-6 sm:pb-8',
-      headline: 'flex items-center justify-center',
-      title: '!mx-0 w-full max-w-none text-shadow-md text-center text-balance',
-      description: '!mx-0 w-full max-w-none text-center text-balance',
-      links: 'mt-4 flex-col justify-center items-center'
+      // Compact mobile spacing; rely on AppShell gutters
+      container: 'px-0 pt-10 sm:pt-16 pb-6 sm:pb-8',
+      headline: 'flex items-center justify-start',
+      title: '!mx-0 w-full max-w-none text-shadow-md text-left text-pretty',
+      description: '!mx-0 w-full max-w-none text-left text-pretty leading-relaxed',
+      links: 'mt-4 flex-col justify-start items-start'
     }"
   >
     <template #headline>
@@ -136,7 +136,7 @@ defineProps<{
         </div>
       </Motion>
 
-      <div class="gap-x-4 inline-flex mt-4">
+      <div class="mt-4 flex flex-wrap gap-2 justify-start">
         <Motion
           v-for="(link, index) of footer?.links"
           :key="index"
