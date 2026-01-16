@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
@@ -9,9 +10,13 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'motion-v/nuxt'
   ],
-
   devtools: {
     enabled: true
+  },
+
+  // GitHub Pages (aizacoders.github.io) serves from the root.
+  app: {
+    baseURL: '/'
   },
 
   css: ['~/assets/css/main.css'],
@@ -19,6 +24,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
 
   nitro: {
+    preset: 'github-pages',
     prerender: {
       routes: [
         '/'
