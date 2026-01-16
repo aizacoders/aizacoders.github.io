@@ -12,8 +12,8 @@ defineProps<{
     :description="page.skills.description"
     :ui="{
       container: 'px-0 !pt-0 w-full gap-4',
-      title: 'text-left text-3xl sm:text-4xl lg:text-5xl font-semibold',
-      description: 'text-left mt-3 text-lg sm:text-xl text-muted',
+      title: 'text-left text-2xl sm:text-3xl lg:text-4xl font-semibold',
+      description: 'text-left mt-3 text-base sm:text-lg text-muted',
       wrapper: 'gap-3'
     }"
   >
@@ -23,7 +23,7 @@ defineProps<{
         :key="idx"
         class="rounded-lg border border-default p-5"
       >
-        <p class="text-lg sm:text-xl font-semibold text-default">
+        <p class="text-base sm:text-lg font-semibold text-default">
           {{ group.title }}
         </p>
 
@@ -33,7 +33,7 @@ defineProps<{
             :key="i"
             color="neutral"
             variant="soft"
-            size="md"
+            size="sm"
           >
             {{ item }}
           </UBadge>

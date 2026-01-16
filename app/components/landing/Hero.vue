@@ -12,11 +12,10 @@ defineProps<{
   <UPageHero
     :ui="{
       // Match section alignment: rely on AppShell for gutters
-      container: 'px-0 pt-16 sm:pt-18 pb-6 sm:pb-8',
+      container: 'px-0 pt-14 sm:pt-16 pb-6 sm:pb-8',
       headline: 'flex items-center justify-center',
-      // Make text blocks take full available width (Nuxt UI defaults tend to constrain them)
-      title: '!mx-0 w-full max-w-none text-shadow-md text-center',
-      description: '!mx-0 w-full max-w-none text-center',
+      title: '!mx-0 w-full max-w-none text-shadow-md text-center text-balance',
+      description: '!mx-0 w-full max-w-none text-center text-balance',
       links: 'mt-4 flex-col justify-center items-center'
     }"
   >
@@ -108,13 +107,16 @@ defineProps<{
       >
         <div
           v-if="page.hero.links"
-          class="flex items-center gap-2"
+          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto"
         >
-          <UButton v-bind="page.hero.links[0]" />
+          <UButton
+            v-bind="page.hero.links[0]"
+            class="w-full sm:w-auto"
+          />
           <UButton
             :color="global.available ? 'success' : 'error'"
             variant="ghost"
-            class="gap-2"
+            class="gap-2 w-full sm:w-auto"
             :to="global.available ? global.meetingLink : ''"
             :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
           >

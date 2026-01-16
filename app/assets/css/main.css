@@ -11,8 +11,8 @@
 :root {
   --ui-container: 100%;
 
-  /* Bigger typography across the site */
-  font-size: 20px;
+  /* Mobile-first typography: avoid oversized text on phones */
+  font-size: 17px;
 
   /* Light mode: slightly warmer/darker surfaces + stronger text contrast */
   --ui-bg: #fafafa;
@@ -26,6 +26,18 @@
     color: #282a30;
     background-color: #c8c8c8;
   }
+}
+
+@media (min-width: 640px) {
+  :root { font-size: 18px; }
+}
+
+@media (min-width: 1024px) {
+  :root { font-size: 19px; }
+}
+
+@media (min-width: 1280px) {
+  :root { font-size: 20px; }
 }
 
 .dark {
