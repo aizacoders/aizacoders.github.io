@@ -43,7 +43,7 @@ experience:
       location: "South Jakarta, Indonesia"
       company:
         name: "Bank Saqu"
-        url: "https://www.astra.co.id/"
+        url: "https://www.linkedin.com/company/bank-saqu/posts/?feedView=all"
       highlights:
         - "Design, develop, and own scalable backend services for core banking ecosystems, including Open APIs for Account & Payment, Onboarding, Direct Debit, and WebView systems."
         - "Build secure, high-performance RESTful APIs using Spring Boot, ensuring compliance with banking standards and security requirements."
@@ -74,7 +74,7 @@ experience:
       location: "South Jakarta, Indonesia"
       company:
         name: "Aleph Pte Ltd"
-        url: "https://www.linkedin.com/company/aleph/"
+        url: "https://www.linkedin.com/company/aleph-labs/posts/?feedView=all"
       highlights:
         - "Architect and engineer scalable backend services for mobile, iOS, and web platforms."
         - "Enhance and extend RESTful APIs to meet evolving product requirements."
@@ -104,7 +104,7 @@ experience:
       location: "South Jakarta, Indonesia"
       company:
         name: "PT. Advotics Technology Global"
-        url: "https://advotics.com/"
+        url: "https://www.linkedin.com/company/advotics/posts/?feedView=all"
       highlights:
         - "Develop ETL solutions for data migration from OLTP to OLAP systems."
         - "Design and implement RESTful APIs for internal and external consumers."
@@ -134,7 +134,7 @@ experience:
       location: "South Jakarta, Indonesia"
       company:
         name: "PT. Indonesia Indicator"
-        url: "https://www.indonesiaindicator.com/"
+        url: "https://www.linkedin.com/company/indonesia-indicator/"
       highlights:
         - "Develop data cleaning services using Python for CSV and Excel processing."
         - "Engineer Social Network Analysis (SNA) solutions using machine learning."
@@ -159,7 +159,7 @@ experience:
       location: "Lampung, Indonesia"
       company:
         name: "Sumatera Institute of Technologies"
-        url: "https://www.itera.ac.id/"
+        url: "https://www.linkedin.com/school/institutteknologi-sumatera/"
       highlights:
         - "Deliver practicum materials covering data analysis, machine learning, and deep learning."
         - "Develop Python-based data science learning modules."
@@ -180,7 +180,7 @@ experience:
       location: "Lampung, Indonesia"
       company:
         name: "Sumatera Institute of Technologies"
-        url: "https://www.itera.ac.id/"
+        url: "https://www.linkedin.com/school/institutteknologi-sumatera/"
       highlights:
         - "Design and implement embedded systems using C programming."
         - "Deliver IoT practicum materials using Arduino and NodeMCU."

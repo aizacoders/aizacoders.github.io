@@ -11,8 +11,8 @@ defineProps<{
 <template>
   <UPageHero
     :ui="{
-      // Compact mobile spacing; rely on AppShell gutters
-      container: 'px-0 pt-10 sm:pt-16 pb-6 sm:pb-8',
+      // Add extra top spacing so the fixed header doesn't overlap the hero avatar.
+      container: 'px-0 pt-24 sm:pt-24 pb-6 sm:pb-8',
       headline: 'flex items-center justify-start',
       title: '!mx-0 w-full max-w-none text-shadow-md text-left text-pretty',
       description: '!mx-0 w-full max-w-none text-left text-pretty leading-relaxed',
@@ -34,11 +34,14 @@ defineProps<{
           delay: 0.1
         }"
       >
-        <UColorModeAvatar
-          class="size-18 ring ring-default ring-offset-3 ring-offset-bg"
-          :light="global.picture?.light!"
-          :dark="global.picture?.dark!"
+        <NuxtImg
+          :src="global.picture?.light!"
           :alt="global.picture?.alt!"
+          width="256"
+          height="256"
+          densities="x1 x2"
+          format="png"
+          class="size-18 rounded-full object-cover ring ring-default ring-offset-3 ring-offset-bg"
         />
       </Motion>
     </template>
@@ -111,12 +114,15 @@ defineProps<{
         >
           <UButton
             v-bind="page.hero.links[0]"
-            class="w-full sm:w-auto"
+            size="lg"
+            color="success"
+            variant="solid"
+            class="w-full sm:w-auto rounded-full px-5 py-3 font-semibold shadow-sm text-white dark:text-black"
           />
           <UButton
             :color="global.available ? 'success' : 'error'"
             variant="ghost"
-            class="gap-2 w-full sm:w-auto"
+            class="gap-2 w-full sm:w-auto rounded-full"
             :to="global.available ? global.meetingLink : ''"
             :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
           >
