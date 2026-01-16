@@ -9,7 +9,18 @@
 }
 
 :root {
-  --ui-container: var(--container-4xl);
+  --ui-container: 100%;
+
+  /* Bigger typography across the site */
+  font-size: 20px;
+
+  /* Light mode: slightly warmer/darker surfaces + stronger text contrast */
+  --ui-bg: #fafafa;
+  --ui-bg-muted: #f3f4f6;
+  --ui-bg-elevated: #ffffff;
+  --ui-border: rgba(0, 0, 0, 0.10);
+  --ui-text: rgba(0, 0, 0, 0.88);
+  --ui-text-muted: rgba(0, 0, 0, 0.62);
 
   ::selection {
     color: #282a30;
@@ -18,6 +29,16 @@
 }
 
 .dark {
+  /* Neutral near-black backgrounds (avoid blue tint) */
+  --ui-bg: #0a0a0b;
+  --ui-bg-muted: #0f0f12;
+  --ui-bg-elevated: #141419;
+
+  /* Borders + text */
+  --ui-border: rgba(255, 255, 255, 0.10);
+  --ui-text: rgba(255, 255, 255, 0.92);
+  --ui-text-muted: rgba(255, 255, 255, 0.70);
+
   ::selection {
     color: #ffffff;
     background-color: #474747;

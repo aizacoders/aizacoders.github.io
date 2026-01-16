@@ -1,6 +1,13 @@
-title: Designing Interfaces, Building Experiences.
-description: I've worked on a variety of projects, focusing on creating intuitive digital experiences where thoughtful design meets clean code. Here are some highlights I'm proud of, showcasing my process from concept to execution.
+title: Backend Systems & Platforms.
+description: |
+  Selected work focused on backend systems—Open APIs, payments, ETL/data platforms, and distributed services.
+  I care about reliability, security, performance, and clean service boundaries.
 links:
-  - label: "Let's talk"
+  - label: "View GitHub"
+    to: "https://github.com/aizacoders"
     color: "neutral"
-  - label: 'Email me'
+    target: "_blank"
+  - label: "Email me"
+    to: "mailto:miftakhull.aziz@gmail.com"
+    color: "primary"
+    target: "_self"

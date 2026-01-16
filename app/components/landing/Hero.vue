@@ -11,8 +11,12 @@ defineProps<{
 <template>
   <UPageHero
     :ui="{
+      // Match section alignment: rely on AppShell for gutters
+      container: 'px-0 pt-16 sm:pt-18 pb-6 sm:pb-8',
       headline: 'flex items-center justify-center',
-      title: 'text-shadow-md max-w-lg mx-auto',
+      // Make text blocks take full available width (Nuxt UI defaults tend to constrain them)
+      title: '!mx-0 w-full max-w-none text-shadow-md text-center',
+      description: '!mx-0 w-full max-w-none text-center',
       links: 'mt-4 flex-col justify-center items-center'
     }"
   >
@@ -20,13 +24,11 @@ defineProps<{
       <Motion
         :initial="{
           scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
+          opacity: 0
         }"
         :animate="{
           scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
+          opacity: 1
         }"
         :transition="{
           duration: 0.6,
@@ -34,7 +36,7 @@ defineProps<{
         }"
       >
         <UColorModeAvatar
-          class="size-18 ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
+          class="size-18 ring ring-default ring-offset-3 ring-offset-bg"
           :light="global.picture?.light!"
           :dark="global.picture?.dark!"
           :alt="global.picture?.alt!"
@@ -80,7 +82,10 @@ defineProps<{
           delay: 0.3
         }"
       >
-        {{ page.description }}
+        <MDC
+          :value="page.description"
+          unwrap="p"
+        />
       </Motion>
     </template>
 
@@ -155,37 +160,5 @@ defineProps<{
         </Motion>
       </div>
     </template>
-
-    <UMarquee
-      pause-on-hover
-      class="py-2 -mx-8 sm:-mx-12 lg:-mx-16 [--duration:40s]"
-    >
-      <Motion
-        v-for="(img, index) in page.hero.images"
-        :key="index"
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: index * 0.1
-        }"
-      >
-        <NuxtImg
-          width="234"
-          height="234"
-          class="rounded-lg aspect-square object-cover"
-          :class="index % 2 === 0 ? '-rotate-2' : 'rotate-2'"
-          v-bind="img"
-        />
-      </Motion>
-    </UMarquee>
   </UPageHero>
 </template>

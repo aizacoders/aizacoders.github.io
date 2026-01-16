@@ -3,10 +3,10 @@
 
 <template>
   <div>
-    <UContainer class="sm:border-x border-default pt-10">
+    <AppShell>
       <AppHeader :links="navLinks" />
       <slot />
       <AppFooter />
-    </UContainer>
+    </AppShell>
   </div>
 </template>

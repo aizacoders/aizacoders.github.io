@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content'
 
+type Testimonial = {
+  quote: string
+  author: Record<string, any>
+}
+
 defineProps<{
   page: IndexCollectionItem
 }>()
@@ -14,16 +19,17 @@ defineProps<{
   >
     <UCarousel
       v-slot="{ item }"
-      :items="page.testimonials"
+      :items="(page.testimonials as unknown as Testimonial[])"
       :autoplay="{ delay: 4000 }"
       loop
       dots
       :ui="{
-        viewport: '-mx-4 sm:-mx-12 lg:-mx-16 bg-elevated/50 max-w-(--ui-container)'
+        viewport: 'bg-elevated/50 rounded-lg'
       }"
     >
       <UPageCTA
-        :description="item.quote"
+        v-if="item"
+        :description="(item as Testimonial).quote"
         variant="naked"
         class="rounded-none"
         :ui="{
@@ -32,7 +38,7 @@ defineProps<{
         }"
       >
         <UUser
-          v-bind="item.author"
+          v-bind="(item as Testimonial).author"
           size="xl"
           class="justify-center"
         />

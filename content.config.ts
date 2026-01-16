@@ -47,17 +47,25 @@ export default defineContentConfig({
         about: createBaseSchema(),
         experience: createBaseSchema().extend({
           items: z.array(z.object({
-            date: z.date(),
+            // Display-friendly date range for resumes (e.g., "Dec 2024 – Present")
+            date: z.string(),
             position: z.string(),
+            location: z.string().optional(),
+            highlights: z.array(z.string()).optional(),
+            techStack: z.array(z.string()).optional(),
             company: z.object({
               name: z.string(),
-              url: z.string(),
-              logo: z.string().editor({ input: 'icon' }),
-              color: z.string()
+              url: z.string()
             })
           }))
         }),
         testimonials: z.array(createTestimonialSchema()),
+        skills: createBaseSchema().extend({
+          groups: z.array(z.object({
+            title: z.string(),
+            items: z.array(z.string())
+          }))
+        }),
         blog: createBaseSchema(),
         faq: createBaseSchema().extend({
           categories: z.array(

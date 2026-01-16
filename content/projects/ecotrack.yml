@@ -1,6 +1,6 @@
-title: EcoTrack Sustainability App
-description: Created a mobile-first application to help users track and reduce their environmental impact. Translated complex sustainability metrics into an accessible and motivating user interface.
-image: https://images.unsplash.com/photo-1613858749733-3a3e456e3d9e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-url: "#"
-tags: ["UX Research", "UI Design", "Mobile App"]
-date: "2023"
+title: ETL & Data Migration (OLTP → OLAP)
+description: Built ETL solutions to migrate and transform data from OLTP systems to OLAP for analytics and reporting. Optimized queries, implemented scheduled reporting, and improved reliability across environments.
+image: https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1470&auto=format&fit=crop
+url: "https://aizacoders.github.io/projects"
+tags: ["Java", "SQL", "Spring Boot", "Hibernate", "JPA", "Elasticsearch", "Redis", "AWS"]
+date: "2022-03-01"
