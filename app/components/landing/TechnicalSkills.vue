@@ -13,7 +13,7 @@ defineProps<{
     :ui="{
       container: 'px-0 !pt-0 w-full gap-3',
       title: 'text-left text-xl sm:text-3xl lg:text-4xl font-semibold tracking-tight',
-      description: 'text-left mt-2 text-sm sm:text-lg text-muted leading-relaxed',
+      description: 'text-left mt-2 text-sm sm:text-lg lg:text-xl text-muted leading-relaxed',
       wrapper: 'gap-2'
     }"
   >
@@ -23,17 +23,18 @@ defineProps<{
         :key="idx"
         class="rounded-lg border border-default p-3 sm:p-5"
       >
-        <p class="text-sm sm:text-lg font-semibold text-default tracking-tight">
+        <p class="text-sm sm:text-lg lg:text-xl font-semibold text-default tracking-tight">
           {{ group.title }}
         </p>
 
-        <div class="mt-2 flex flex-wrap gap-2">
+        <div class="mt-2 flex flex-wrap gap-2 lg:gap-3">
           <UBadge
             v-for="(item, i) in group.items"
             :key="i"
             color="neutral"
             variant="soft"
             size="sm"
+            class="lg:text-base xl:text-lg"
           >
             {{ item }}
           </UBadge>

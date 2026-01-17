@@ -3,9 +3,26 @@ import type { IndexCollectionItem } from '@nuxt/content'
 
 const { footer, global } = useAppConfig()
 
-defineProps<{
+const props = defineProps<{
   page: IndexCollectionItem
 }>()
+
+const mobileDescription = computed(() => {
+  const raw = props.page?.description || ''
+  // Strip basic markdown emphasis and keep it short for mobile.
+  const plain = raw
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/__(.*?)__/g, '$1')
+    // [text](url) -> text (simplified matcher for mobile)
+    .replace(/[[]([^\]]+?)[)]\([^)]*\)/g, '$1')
+    .replace(/`(.*?)`/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  if (!plain) return ''
+  const max = 180
+  return plain.length > max ? `${plain.slice(0, max).trim()}…` : plain
+})
 </script>
 
 <template>
@@ -13,7 +30,8 @@ defineProps<{
     :ui="{
       // Add extra top spacing so the fixed header doesn't overlap the hero avatar.
       container: 'px-0 pt-24 sm:pt-24 pb-6 sm:pb-8',
-      headline: 'flex items-center justify-start',
+      // Center avatar on mobile, keep left-aligned on sm+
+      headline: 'flex items-center justify-center sm:justify-start',
       title: '!mx-0 w-full max-w-none text-shadow-md text-left text-pretty',
       description: '!mx-0 w-full max-w-none text-left text-pretty leading-relaxed',
       links: 'mt-4 flex-col justify-start items-start'
@@ -84,7 +102,14 @@ defineProps<{
           delay: 0.3
         }"
       >
+        <!-- Mobile: simpler/shorter plain text -->
+        <p class="sm:hidden">
+          {{ mobileDescription }}
+        </p>
+
+        <!-- Desktop/tablet: keep rich markdown -->
         <MDC
+          class="hidden sm:block"
           :value="page.description"
           unwrap="p"
         />
@@ -117,12 +142,12 @@ defineProps<{
             size="lg"
             color="success"
             variant="solid"
-            class="w-full sm:w-auto rounded-full px-5 py-3 font-semibold shadow-sm text-white dark:text-black"
+            class="w-full sm:w-auto rounded-full px-5 py-3 font-semibold shadow-sm text-white dark:text-black justify-center text-center"
           />
           <UButton
             :color="global.available ? 'success' : 'error'"
             variant="ghost"
-            class="gap-2 w-full sm:w-auto rounded-full"
+            class="gap-2 w-full sm:w-auto rounded-full justify-center text-center"
             :to="global.available ? global.meetingLink : ''"
             :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
           >
