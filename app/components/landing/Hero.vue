@@ -29,12 +29,13 @@ const mobileDescription = computed(() => {
   <UPageHero
     :ui="{
       // Add extra top spacing so the fixed header doesn't overlap the hero avatar.
-      container: 'px-0 pt-24 sm:pt-24 pb-6 sm:pb-8',
+      container: 'px-0 pt-24 sm:pt-24 pb-10 sm:pb-14',
       // Center avatar on mobile, keep left-aligned on sm+
       headline: 'flex items-center justify-center sm:justify-start',
       title: '!mx-0 w-full max-w-none text-shadow-md text-left text-pretty',
       description: '!mx-0 w-full max-w-none text-left text-pretty leading-relaxed',
-      links: 'mt-4 flex-col justify-start items-start'
+      // Center the CTA block on mobile, align left on sm+
+      links: 'mt-4 flex-col justify-center items-stretch sm:justify-start sm:items-start'
     }"
   >
     <template #headline>
@@ -135,19 +136,60 @@ const mobileDescription = computed(() => {
       >
         <div
           v-if="page.hero.links"
-          class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto"
+          class="w-full"
         >
-          <UButton
-            v-bind="page.hero.links[0]"
-            size="lg"
-            color="success"
-            variant="solid"
-            class="w-full sm:w-auto rounded-full px-5 py-3 font-semibold shadow-sm text-white dark:text-black justify-center text-center"
-          />
+          <!-- Mobile: 2-col CTA row (Contact left, Resume right). Desktop: inline row incl. availability. -->
+          <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-row sm:items-center sm:w-auto">
+            <UButton
+              v-bind="page.hero.links[0]"
+              size="lg"
+              color="success"
+              variant="solid"
+              class="w-full rounded-full px-5 py-3 font-semibold shadow-sm text-white dark:text-black justify-center text-center"
+            />
+
+            <UButton
+              label="Get Resume"
+              icon="i-lucide-download"
+              to="/resume/my_resume.pdf"
+              target="_blank"
+              rel="noopener"
+              size="lg"
+              color="neutral"
+              variant="outline"
+              class="w-full rounded-full px-5 py-3 font-semibold justify-center text-center"
+            />
+
+            <!-- Desktop: keep availability in the same row -->
+            <UButton
+              :color="global.available ? 'success' : 'error'"
+              variant="ghost"
+              size="lg"
+              class="hidden sm:inline-flex gap-2 rounded-full justify-center text-center font-semibold sm:text-lg lg:text-xl"
+              :to="global.available ? global.meetingLink : ''"
+              :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
+            >
+              <template #leading>
+                <span class="relative flex size-2">
+                  <span
+                    class="absolute inline-flex size-full rounded-full opacity-75"
+                    :class="global.available ? 'bg-success animate-ping' : 'bg-error'"
+                  />
+                  <span
+                    class="relative inline-flex size-2 scale-90 rounded-full"
+                    :class="global.available ? 'bg-success' : 'bg-error'"
+                  />
+                </span>
+              </template>
+            </UButton>
+          </div>
+
+          <!-- Mobile: bigger + more noticeable availability status -->
           <UButton
             :color="global.available ? 'success' : 'error'"
             variant="ghost"
-            class="gap-2 w-full sm:w-auto rounded-full justify-center text-center"
+            size="lg"
+            class="mt-2 sm:hidden gap-2 w-full rounded-full justify-center text-center font-semibold text-base"
             :to="global.available ? global.meetingLink : ''"
             :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
           >
@@ -167,7 +209,7 @@ const mobileDescription = computed(() => {
         </div>
       </Motion>
 
-      <div class="mt-4 flex flex-wrap gap-2 justify-start">
+      <div class="mt-4 flex flex-wrap gap-2 justify-center sm:justify-start">
         <Motion
           v-for="(link, index) of footer?.links"
           :key="index"
@@ -188,9 +230,14 @@ const mobileDescription = computed(() => {
           }"
         >
           <UButton
-            v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
+            v-bind="{ size: 'xl', color: 'neutral', variant: 'ghost', ...link }"
           />
         </Motion>
+      </div>
+
+      <!-- Divider below social links -->
+      <div class="mt-6 w-full">
+        <div class="h-px w-full bg-default/60" />
       </div>
     </template>
   </UPageHero>

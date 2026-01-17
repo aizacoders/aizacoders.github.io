@@ -28,7 +28,7 @@ export default defineAppConfig({
     links: [
       {
         'icon': 'i-simple-icons-whatsapp',
-        'to': 'https://wa.me/',
+        'to': 'https://wa.me/+6282249993937',
         'target': '_blank',
         'aria-label': 'WhatsApp'
       },
